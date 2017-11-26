@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+        <title>DMPM</title>
+        <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../../css/main.css">
+    </head>
+    <body>
+        <nav class="side-menu">
+            <div class="logo"></div>
+            <div class="menu">
+                <button>查看数据</button>
+                <ul>
+                    <li class="active"><a href="/index/index/index.html">CS本构参数</a></li>
+                    <li><a href="/index/index/indexjcbg.html">材料JC本构参数</a></li>
+                    <li><a href="/index/index/indexfh.html">复合材料</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="content">
+            <header>
+                <button onclick="add()">+</button>
+                <h1>CS本构参数</h1>
+               <!-- 此处修改 by zk -->
+            <!-- 原版本代码  
+               <div class="search">
+                    <select>
+                        <option value="">牌号</option>
+                        <option value="">类别</option>
+                    </select>
+                    <input type="text" placeholder="请输入">
+                    <label>搜索</label>
+                </div> -->
+              <form method="get" id="search" action="\index\Index\cs_search"> 
+               <div class="search"> 
+                <select id="input" name="style"> 
+                    <option value="csGrade">牌号</option>
+                    <option value="csCategory">类别</option> 
+                 </select> 
+                <input type="text" name="name" placeholder="请输入" />
+                <input type="submit" value="搜索" style="width:50px;"></input> 
+               </div> 
+              </form>
+                <!-- 修改 -->
+            </header>
+            <div class="table">
+                <table>
+                    <tr class="table-header">
+                        <th></th>
+                        <th>牌号</th>
+                        <th>材料类别</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>n</th>
+                        <th>D</th>
+                        <th>q</th>
+                        <th>操作</th>
+                    </tr>
+                                        <tr class="table-body" id="1">
+                        <td class="yasuo" width="40px">
+                            <div>压缩</div>
+                        </td>
+                        <td>2024-T3</td>
+                        <td>铝合金</td>
+                        <td>280</td>
+                        <td>400</td>
+                        <td>0.15</td>
+                        <td>70000</td>
+                        <td>1.11</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button type="button" class="btn btn-default pic" data-img-id="1">图片</button>
+                                <button type="button" class="btn btn-info" data-id="1" onclick="modify()">修改</button>
+                                <button type="button" class="btn btn-danger delete" data-id="1">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                                        <tr class="table-body" id="2">
+                        <td class="lashen" width="40px">
+                            <div>拉伸</div>
+                        </td>
+                        <td>2024-T3</td>
+                        <td>铝合金</td>
+                        <td>320</td>
+                        <td>350.00</td>
+                        <td>0.42</td>
+                        <td>80000.00</td>
+                        <td>3.0</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button type="button" class="btn btn-default pic" data-img-id="2">图片</button>
+                                <button type="button" class="btn btn-info" data-id="1" onclick="modify()">修改</button>
+                                <button type="button" class="btn btn-danger delete" data-id="1">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                                        <tr class="table-body" id="3">
+                        <td class="yasuo" width="40px">
+                            <div>压缩</div>
+                        </td>
+                        <td>2024-T351</td>
+                        <td>铝合金</td>
+                        <td>0</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>0.0</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button type="button" class="btn btn-default pic" data-img-id="3">图片</button>
+                                <button type="button" class="btn btn-info" data-id="1" onclick="modify()">修改</button>
+                                <button type="button" class="btn btn-danger delete" data-id="1">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                                        <tr class="table-body" id="4">
+                        <td class="yasuo" width="40px">
+                            <div>压缩</div>
+                        </td>
+                        <td>2024-T351铝合金</td>
+                        <td>铝合金</td>
+                        <td>310</td>
+                        <td>600.00</td>
+                        <td>0.55</td>
+                        <td>7000.00</td>
+                        <td>1.0</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button type="button" class="btn btn-default pic" data-img-id="4">图片</button>
+                                <button type="button" class="btn btn-info" data-id="1" onclick="modify()">修改</button>
+                                <button type="button" class="btn btn-danger delete" data-id="1">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                                        <tr class="table-body" id="5">
+                        <td class="lashen" width="40px">
+                            <div>拉伸</div>
+                        </td>
+                        <td>2024-T351铝合金</td>
+                        <td>铝合金</td>
+                        <td>310</td>
+                        <td>600.00</td>
+                        <td>0.55</td>
+                        <td>7000.00</td>
+                        <td>1.0</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button type="button" class="btn btn-default pic" data-img-id="5">图片</button>
+                                <button type="button" class="btn btn-info" data-id="1" onclick="modify()">修改</button>
+                                <button type="button" class="btn btn-danger delete" data-id="1">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                                        <tr class="table-body" id="6">
+                        <td class="yasuo" width="40px">
+                            <div>压缩</div>
+                        </td>
+                        <td>2524-T3铝合金</td>
+                        <td>铝合金</td>
+                        <td>250</td>
+                        <td>500.00</td>
+                        <td>0.55</td>
+                        <td>6000.00</td>
+                        <td>1.3</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button type="button" class="btn btn-default pic" data-img-id="6">图片</button>
+                                <button type="button" class="btn btn-info" data-id="1" onclick="modify()">修改</button>
+                                <button type="button" class="btn btn-danger delete" data-id="1">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                                        <tr class="table-body" id="7">
+                        <td class="lashen" width="40px">
+                            <div>拉伸</div>
+                        </td>
+                        <td>2524-T3铝合金</td>
+                        <td>铝合金</td>
+                        <td>280</td>
+                        <td>500.00</td>
+                        <td>0.55</td>
+                        <td>6000.00</td>
+                        <td>1.3</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button type="button" class="btn btn-default pic" data-img-id="7">图片</button>
+                                <button type="button" class="btn btn-info" data-id="1" onclick="modify()">修改</button>
+                                <button type="button" class="btn btn-danger delete" data-id="1">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                                        <tr class="table-body" id="8">
+                        <td class="yasuo" width="40px">
+                            <div>压缩</div>
+                        </td>
+                        <td>2A12-CZ铝合金</td>
+                        <td>铝合金</td>
+                        <td>270</td>
+                        <td>500.00</td>
+                        <td>0.50</td>
+                        <td>7000.00</td>
+                        <td>2.0</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button type="button" class="btn btn-default pic" data-img-id="8">图片</button>
+                                <button type="button" class="btn btn-info" data-id="1" onclick="modify()">修改</button>
+                                <button type="button" class="btn btn-danger delete" data-id="1">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                                        <tr class="table-body" id="9">
+                        <td class="lashen" width="40px">
+                            <div>拉伸</div>
+                        </td>
+                        <td>2A12-CZ铝合金</td>
+                        <td>铝合金</td>
+                        <td>270</td>
+                        <td>500.00</td>
+                        <td>0.50</td>
+                        <td>7000.00</td>
+                        <td>2.0</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button type="button" class="btn btn-default pic" data-img-id="9">图片</button>
+                                <button type="button" class="btn btn-info" data-id="1" onclick="modify()">修改</button>
+                                <button type="button" class="btn btn-danger delete" data-id="1">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                                        <tr class="table-body" id="10">
+                        <td class="yasuo" width="40px">
+                            <div>压缩</div>
+                        </td>
+                        <td>2A12-M铝合金</td>
+                        <td>铝合金</td>
+                        <td>150</td>
+                        <td>180.00</td>
+                        <td>0.50</td>
+                        <td>7000.00</td>
+                        <td>1.0</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button type="button" class="btn btn-default pic" data-img-id="10">图片</button>
+                                <button type="button" class="btn btn-info" data-id="1" onclick="modify()">修改</button>
+                                <button type="button" class="btn btn-danger delete" data-id="1">删除</button>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                </table>
+                <nav class="page">
+                    <ul class="pagination">
+                        <ul class="pagination"><li class="disabled"><span>&laquo;</span></li> <li class="active"><span>1</span></li><li><a href="/?page=2">2</a></li><li><a href="/?page=3">3</a></li><li><a href="/?page=4">4</a></li><li><a href="/?page=5">5</a></li><li><a href="/?page=6">6</a></li><li><a href="/?page=7">7</a></li><li><a href="/?page=8">8</a></li> <li><a href="/?page=2">&raquo;</a></li></ul>                    </ul>
+                </nav>
+            </div>
+        </div>
+        <script src="../../../js/jqueryp.js"></script>
+        <script src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../layer/layer.js"></script>
+        <script>
+            $('.delete').on('click', function() {
+                let that = $(this)
+                layer.confirm('确认要删除？', {
+                    btn: ['确认', '取消']
+                }, function() {
+                    console.log(that.data("id"));
+                    layer.msg('删除成功', {icon: 1})
+                });
+            })
+
+            $('.pic').on('click', function() {
+                let id = $(this).data("img-id");
+                $.getJSON('http://localhost/index/index/reJson?id=' + id, function (json) {
+                    $.ajaxSetup({ cache: true });
+                    layer.photos({
+                        photos: json
+                        , anim: 5
+                    });
+                }); 
+            })
+
+            var add = function () {
+                layer.open({
+                    type: 2,
+                    title: '添加CS本构参数',
+                    shadeClose: true,
+                    shade: false,
+                    maxmin: true,
+                    area: ['1020px', '600px'],
+                    content: '/index/index/addcs.html',
+                    success: function(layero, index) {
+                        var submit = layer.getChildFrame('#submit', index);
+                        submit.on('click', function () {
+                            // 提交
+                            layer.closeAll();
+                        })
+                        var cancel = layer.getChildFrame('#cancel', index);
+                        cancel.on('click', function () {
+                            // 提交
+                            layer.closeAll();
+                        })
+                    }
+                });
+            }
+
+            var modify = function () {
+                layer.open({
+                    type: 2,
+                    title: '修改CS本构参数',
+                    shadeClose: true,
+                    shade: false,
+                    maxmin: true,
+                    area: ['1020px', '600px'],
+                    content: '/index/index/modifycs.html',
+                    success: function (layero, index) {
+                        var submit = layer.getChildFrame('#submit', index);
+                        submit.on('click', function () {
+                            // 提交
+                            layer.closeAll();
+                        })
+                        var cancel = layer.getChildFrame('#cancel', index);
+                        cancel.on('click', function () {
+                            // 提交
+                            layer.closeAll();
+                        })
+                    }
+                });
+            }
+        </script>
+    </body>
+</html><br />
+<b>Fatal error</b>:  Uncaught think\exception\ErrorException: Undefined index: argv in G:\XAMPP\htdocs\web\thinkphp\library\think\log\driver\File.php:89
+Stack trace:
+#0 G:\XAMPP\htdocs\web\thinkphp\library\think\log\driver\File.php(89): think\Error::appError(8, 'Undefined index...', 'G:\\XAMPP\\htdocs...', 89, Array)
+#1 G:\XAMPP\htdocs\web\thinkphp\library\think\log\driver\File.php(70): think\log\driver\File-&gt;write('[ info ] [ LANG...', 'G:\\XAMPP\\htdocs...')
+#2 G:\XAMPP\htdocs\web\thinkphp\library\think\Log.php(157): think\log\driver\File-&gt;save(Array)
+#3 G:\XAMPP\htdocs\web\thinkphp\library\think\Error.php(84): think\Log::save()
+#4 [internal function]: think\Error::appShutdown()
+#5 {main}
+  thrown in <b>G:\XAMPP\htdocs\web\thinkphp\library\think\log\driver\File.php</b> on line <b>89</b><br />
+e <b>89</b><b
