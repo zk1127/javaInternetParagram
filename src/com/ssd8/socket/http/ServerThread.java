@@ -28,7 +28,7 @@ public class ServerThread {
      * multithreading function
      * @throws IOException
      */
-    public void servic() throws IOException {
+    public void service() throws IOException {
         Socket socket = null;
         while (true){
             socket = ss.accept();
@@ -36,6 +36,6 @@ public class ServerThread {
         }
     }
     public static void main(String[] args) throws IOException {
-        new ServerThread().servic();;
+        new ServerThread().service();;
     }
 }
