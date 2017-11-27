@@ -24,6 +24,10 @@ public class ServerThread {
         System.out.println("服务器启动.....");
     }
 
+    /**
+     * multithreading function
+     * @throws IOException
+     */
     public void servic() throws IOException {
         Socket socket = null;
         while (true){
