@@ -50,7 +50,7 @@ public class HttpClient {
      * StringBuffer storing the header
      */
     private StringBuffer header = null;
-
+    private StringBuffer putheader = null;
     /**
      * StringBuffer storing the response.
      */
@@ -67,6 +67,7 @@ public class HttpClient {
     public HttpClient() {
         buffer = new byte[buffer_size];
         header = new StringBuffer();
+        putheader = new StringBuffer();
         response = new StringBuffer();
     }
 
@@ -115,33 +116,45 @@ public class HttpClient {
      */
     public void processPutRequest(String request) throws Exception {
         //=======start your job here============//
-        String[] split=request.split(" ",3);
-        String storeFile=split[1];
-        File file = new File("face.jpg");
-        long fileSize = file.length();//得到文件大小
-        DataInputStream dis = new DataInputStream(new BufferedInputStream(new FileInputStream(file)));
-        /**
-         * Head plus file size information
-         */
-        request += CRLF;
-        request += "Content-Length:" + fileSize + CRLF + CRLF;
-        buffer = request.getBytes();
-        ostream.write(buffer, 0, request.length());
-        ostream.flush();
-        int len;
-        /**
-         * Entity transfers file byte stream
-         */
-        while ((len = dis.read(buffer)) > 0) {
-            ostream.write(buffer,0,buffer.length);
-        }
+        String fileName = "./face.jpg";
+        String[] split = request.split(" ", 3);
+        String putFileName = split[1];
+        File putFile = new File(fileName);
+        putheader.append("PUT " + putFileName + " HTTP/1.0" + CRLF);
+        FileType fileType = new FileType(fileName);
+        putheader.append("Content-Type: " + fileType.getType(fileName) + CRLF);
+        putheader.append("Content-Length: " + putFile.length() + CRLF + CRLF);
 
+        ostream.write(putheader.toString().getBytes(), 0, putheader.length());
+        putFile(fileName);
         ostream.flush();
         /**
          * waiting for the response.
          */
         processResponse();
         //=======end of your job============//
+    }
+
+
+    /**
+     * put 文件的传输过程
+     * @param fileName
+     * @throws IOException
+     */
+    public void putFile(String fileName) throws IOException {
+        File file = new File(fileName);
+        if (file.exists()) {
+            FileInputStream fis = new FileInputStream(file);
+            int fileLength = fis.available();
+            int position = 0;
+            int byteRead = 0;
+            while (position < fileLength) {
+                byteRead = fis.read(buffer);
+                ostream.write(buffer, 0, byteRead);
+                position += byteRead;
+            }
+            fis.close();
+        }
     }
 
     /**
@@ -174,8 +187,9 @@ public class HttpClient {
         /**
          * Read the contents and add it to the response StringBuffer.
          */
-        while (istream.read(buffer) != -1) {
-            response.append(new String(buffer, "iso-8859-1"));
+        int b;
+        while ((b = istream.read(buffer)) != -1) {
+            response.append(new String(buffer, "iso-8859-1")).substring(0,b);
         }
     }
 

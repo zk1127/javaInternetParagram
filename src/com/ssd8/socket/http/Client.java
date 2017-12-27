@@ -64,6 +64,14 @@ public class Client {
 			screen.println(args[0] + " is listening to your request:");
 			String request = keyboard.readLine();
 
+			String[] split = request.split(" ",3);
+
+			if (!split[2].equals("HTTP/1.0")){
+				screen.println("Bad request! \n");
+				myClient.close();
+				return;
+			}
+
 			if (request.startsWith("GET")) {
 				/**
 				 * Ask the client to process the GET request.
@@ -83,6 +91,7 @@ public class Client {
 				myClient.close();
 				return;
 			}
+
 
 			/**
 			 * Get the headers and display them.
